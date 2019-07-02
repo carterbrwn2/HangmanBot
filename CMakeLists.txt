@@ -3,4 +3,4 @@ project(HangmanBot)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(HangmanBot main.cpp)
+add_executable(HangmanBot main.cpp bot.h bot.cpp)
