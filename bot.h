@@ -20,16 +20,18 @@ namespace hbot {
         void Run();
 
     private:
+        // The dictionary of words to chose from
+        std::string dictionary = "words.txt";
         // The shrinking list of words to choose from. If the size of this
         // reaches 1 before the bot runs out of lives, the bot has won.
         std::list<std::string> candidates;
-        int num_lives = 7;
         // Letter frequency table used generate the best letter to guess.
         std::map<char, int> letter_freq;
+        int num_lives = 7;
         // Populates candidates with the words in a .txt file.
         // Params:
         //  filename: The name of the file to read
-        void InitializeCandidates(std::string filename);
+        void InitializeCandidates(std::string& filename);
         // Retrieves the target words from the user.
         std::string GetTarget();
         // Removes the words from candidates that do not match the length of
