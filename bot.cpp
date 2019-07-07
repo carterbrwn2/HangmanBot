@@ -52,3 +52,42 @@ void bot::InitializeCandidates(string& filename) {
         cout << "Unable to open " << filename << "\n";
     }
 }
+
+// Current implementation:
+// Get target string from user via command line
+string bot::GetTarget() {
+    string target;
+    cout << "Choose your word:\n";
+    cin >> target;
+    return target;
+}
+
+// Not implemented
+void  bot::RemoveIncorrectLength(int length) {
+
+}
+
+// Not implemented
+char  bot::GetBestGuess() {
+
+}
+
+// Not implemented
+void  bot::UpdateWord(char guess, char word[], string target) {
+
+}
+
+// Not implemented
+void  bot::EliminateContaining(char guess) {
+
+}
+
+// Not implemented
+void  bot::EliminateWithout(char word[]) {
+
+}
+
+// Not implemented
+void  bot::GameOver(bool win) {
+
+}

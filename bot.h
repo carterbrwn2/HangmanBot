@@ -32,7 +32,7 @@ namespace hbot {
         // Params:
         //  filename: The name of the file to read
         void InitializeCandidates(std::string& filename);
-        // Retrieves the target words from the user.
+        // Returns the target word from the user.
         std::string GetTarget();
         // Removes the words from candidates that do not match the length of
         // the word that the user entered.
