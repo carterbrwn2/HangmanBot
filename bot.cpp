@@ -42,7 +42,8 @@ void bot::Run() {
 // "filename.txt"
 void bot::InitializeCandidates(string& filename) {
     string word;
-    ifstream words_file(filename);
+    ifstream words_file;
+    words_file.open(filename);
     if (words_file.is_open()) {
         while (getline(words_file, word)) {
             candidates.push_back(word);
@@ -50,6 +51,12 @@ void bot::InitializeCandidates(string& filename) {
         words_file.close();
     } else {
         cout << "Unable to open " << filename << "\n";
+    }
+}
+
+void bot::PrintCandidates() {
+    for (auto const& i : candidates) {
+        cout << i + "\n";
     }
 }
 
@@ -62,14 +69,30 @@ string bot::GetTarget() {
     return target;
 }
 
-// Not implemented
+// Iterates over candidates and erases the members
+// that do not match the passed length
 void  bot::RemoveIncorrectLength(int length) {
-
+    auto i = candidates.begin();
+    while (i != candidates.end()) {
+        string curr_word = *i;
+        int curr_word_length = curr_word.length();
+        bool is_correct_length = curr_word_length == length;
+        if (!is_correct_length) {
+            candidates.erase(i++);
+        }
+        else {
+            ++i;
+        }
+    }
 }
 
 // Not implemented
 char  bot::GetBestGuess() {
-
+    char guess;
+    for (auto const& i : candidates) {
+        // fill letter_freq
+    }
+    return guess;
 }
 
 // Not implemented
