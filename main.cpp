@@ -2,8 +2,6 @@
 // Created by Carter on 7/2/2019.
 //
 
-#include <iostream>
-#include <vector>
 #include "bot.h"
 using namespace hbot;
 using namespace std;
