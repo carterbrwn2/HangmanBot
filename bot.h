@@ -7,6 +7,8 @@
 
 #include <list>
 #include <string>
+#include <set>
+#include <vector>
 #include <map>
 
 namespace hbot {
@@ -19,9 +21,7 @@ namespace hbot {
         // Starts a game of Hangman and solves for the word the user inputs.
         void Run();
 
-        void PrintCandidates();
-
-    //private:
+    private:
         // The dictionary of words to chose from
         std::string dictionary = "words.txt";
 
@@ -29,15 +29,22 @@ namespace hbot {
         // reaches 1 before the bot runs out of lives, the bot has won.
         std::list<std::string> candidates;
 
+        // A set to keep track of the guesses made
+        std::set<char> guesses;
+
         // Letter frequency table used generate the best letter to guess.
         std::map<char, int> letter_freq;
 
+        // Number of incorrect guesses available
         int num_lives = 7;
 
         // Populates candidates with the words in a .txt file.
         // Params:
         //  filename: The name of the file to read
         void InitializeCandidates(std::string& filename);
+
+        // Helper function: Prints the remaining candidates
+        void PrintCandidates();
 
         // Returns the target word from the user.
         std::string GetTarget();
@@ -58,7 +65,7 @@ namespace hbot {
         //  guess: The letter to identify in target, and place in word[]
         //  word[]: The array to update
         //  target: The string to analyze
-        void UpdateWord(char guess, char word[], std::string target);
+        void UpdateWord(char guess, std::vector<char>& word, std::string& target);
 
         // Eliminates words from candidates that contain the char passed.
         // Params:
@@ -69,7 +76,7 @@ namespace hbot {
         // in word[] so far.
         // Params:
         //  word[]: The array to compare against the words in candidates
-        void EliminateWithout(char word[]);
+        void EliminateWithout(std::vector<char>& word);
 
         // Ends the game.
         // Params:
